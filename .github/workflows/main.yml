@@ -21,5 +21,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt  
 
+    - name: Set up environment variables
+      run: |
+        echo "gmail_app_pwd=${{ secrets.GMAIL_APP_PWD }}" >> $GITHUB_ENV
+
     - name: Run Python script
       run: python main.py 
+      env:
+          gmail_app_pwd: ${{ secrets.GMAIL_APP_PWD }}
