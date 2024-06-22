@@ -30,11 +30,11 @@ heaviest_cat_row = cat_df_sorted.iloc[-1]
 
 #%% Send the Email
 # Your Gmail credentials
-sender_email = 'rwendling17@gmail.com'
+sender_email = os.environ.get('sender_email')
 sender_password = os.environ.get('gmail_app_pwd')
 
 # List of recipient email addresses
-recipient_emails = ['rwendling17@gmail.com', 'rd.wendling@gmail.com']
+recipient_emails = os.environ.get('distro_list')
 
 # Create a connection to the Gmail SMTP server
 server = smtplib.SMTP('smtp.gmail.com', 587)
