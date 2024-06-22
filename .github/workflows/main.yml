@@ -22,41 +22,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt  
 
-    - name: Install Chrome browser
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
-
-    - name: Install jq
-      run: sudo apt-get install -y jq
-
-    - name: Download and set up ChromeDriver
+    - name: Install ChromeDriver
       run: |
         CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-        echo "Chrome version: $CHROME_VERSION"
-        MAJOR_VERSION=$(echo $CHROME_VERSION | cut -d. -f1)
-        echo "Major Chrome version: $MAJOR_VERSION"
-        
-        # Fetch the known good versions JSON
-        curl -s https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json -o known-good-versions.json
-        
-        # Parse the JSON to get the download URL for the correct ChromeDriver version
-        CHROMEDRIVER_URL=$(jq -r --arg MAJOR_VERSION "$MAJOR_VERSION" '
-          .versions[] |
-          select(.version | startswith($MAJOR_VERSION + ".")) |
-          .downloads.chromedriver[] |
-          select(.platform == "linux64") |
-          .url
-        ' known-good-versions.json)
-        
-        echo "ChromeDriver URL: $CHROMEDRIVER_URL"
-        
-        # Download and unzip the ChromeDriver
-        wget -q -O /tmp/chromedriver.zip $CHROMEDRIVER_URL
-        unzip -l /tmp/chromedriver.zip
-        unzip /tmp/chromedriver.zip -d /tmp/chromedriver-linux64
-        sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
-        sudo chmod +x /usr/local/bin/chromedriver
+        wget https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/local/bin/
 
     - name: Set up environment variables
       run: |
