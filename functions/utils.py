@@ -129,20 +129,21 @@ def html_widget_generator(df_row, widget_title):
     html = f"""
         <a href="{df_row['url']}" style="text-decoration: none; color: black;" target="_blank">
             <div style="padding: 10px; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 10px; background-color: #f0f2f6;">
-                <div style="display: flex; align-items: center;"> 
-                    <div>
+                <div style="display: flex; align-items: flex-start;"> 
+                    <div style="margin-right: 20px;">
                         <h3 style="margin: 0; padding: 2px; font-size: 1.2em;">{widget_title}</h3>
                         <p style="margin: 0; color: #333333;"><b>Name:</b> {df_row['name']}</p>
                         <p style="margin: 0; color: #333333;"><b>Breed:</b> {df_row['breed']}</p>
                         <p style="margin: 0; color: #333333;"><b>Age:</b> {df_row['age']}</p>
                         <p style="margin: 0; color: #333333;"><b>Weight:</b> {df_row['weight']}</p>
-                        <p style="margin: 0; color: #333333;">{df_row['desc']}</p>
                     </div>
-                    <img src="{df_row['img']}" alt="News Image" style="width: auto; height: 300px; margin-left: 20px; border-radius: 8px;">
-                <div>
+                    <img src="{df_row['img']}" alt="Image" style="width: auto; height: 300px; border-radius: 8px;">
+                </div>
+                <div style="margin-top: 10px;">
                     <p style="margin: 0; color: #333333;">{df_row['desc']}</p>
                 </div>
             </div>
         </a>
     """
+
     return html
