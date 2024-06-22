@@ -3,6 +3,7 @@ name: Scheduled Job
 on:
   schedule:
     - cron: '05 6 * * *' #'0 2 * * *'  # Runs at 2 am UTC every day (8 MDT)
+  workflow_dispatch: {} # Allows manual triggering
 
 jobs:
   run_script:
