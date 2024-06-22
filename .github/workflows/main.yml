@@ -36,8 +36,12 @@ jobs:
     - name: Set up environment variables
       run: |
         echo "gmail_app_pwd=${{ secrets.GMAIL_APP_PWD }}" >> $GITHUB_ENV
+        echo "distro_list=${{ secrets.DISTRO_LIST }}" >> $GITHUB_ENV
+        echo "sender_email=${{ secrets.SENDER_EMAIL }}" >> $GITHUB_ENV
 
     - name: Run Python script
       run: python main.py 
       env:
           gmail_app_pwd: ${{ secrets.GMAIL_APP_PWD }}
+          distro_list: ${{ secrets.DISTRO_LIST }}
+          sender_email: ${{ secrets.SENDER_EMAIL }}
