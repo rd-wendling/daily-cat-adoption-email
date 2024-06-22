@@ -18,7 +18,9 @@ There are some important steps involved in making sure this works every day with
 - Build and send the email
   - Finally we simply embed that HTML into an email and send it off to the recipients on the distrobution list.
  
-
+## Example Output
+Here is what one of the updates looks like on gmail desktop:
+![screenshot](assets/screenshots/example_output.png)
 
 ## Installation
 To run this yourself, follow these steps:
