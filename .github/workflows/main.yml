@@ -27,6 +27,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
+    - name: Install jq
+      run: sudo apt-get install -y jq
+
     - name: Download and set up ChromeDriver
       run: |
         CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
@@ -48,9 +51,11 @@ jobs:
         
         echo "ChromeDriver URL: $CHROMEDRIVER_URL"
         
+        # Download and unzip the ChromeDriver
         wget -q -O /tmp/chromedriver.zip $CHROMEDRIVER_URL
-        unzip /tmp/chromedriver.zip -d /tmp
-        sudo mv /tmp/chromedriver /usr/local/bin/
+        unzip -l /tmp/chromedriver.zip
+        unzip /tmp/chromedriver.zip -d /tmp/chromedriver-linux64
+        sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/
         sudo chmod +x /usr/local/bin/chromedriver
 
     - name: Set up environment variables
