@@ -35,6 +35,7 @@ sender_password = os.environ.get('gmail_app_pwd')
 
 # List of recipient email addresses
 recipient_emails = os.environ.get('distro_list')
+recipient_emails = recipient_emails.split(',')
 
 # Create a connection to the Gmail SMTP server
 server = smtplib.SMTP('smtp.gmail.com', 587)
