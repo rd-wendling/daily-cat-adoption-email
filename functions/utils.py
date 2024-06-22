@@ -122,28 +122,46 @@ def run_get_cat_data(url):
         return cat_data
     
 
+
 def html_widget_generator(df_row, widget_title):
     '''
     This function builds the html that makes up the cat widgets
     '''
     html = f"""
         <a href="{df_row['url']}" style="text-decoration: none; color: black;" target="_blank">
-            <div style="padding: 10px; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 10px; background-color: #f0f2f6;">
-                <div style="display: flex; align-items: flex-start;"> 
-                    <div style="margin-right: 20px;">
-                        <h3 style="margin: 0; padding: 2px; font-size: 1.2em;">{widget_title}</h3>
-                        <p style="margin: 0; color: #333333;"><b>Name:</b> {df_row['name']}</p>
-                        <p style="margin: 0; color: #333333;"><b>Breed:</b> {df_row['breed']}</p>
-                        <p style="margin: 0; color: #333333;"><b>Age:</b> {df_row['age']}</p>
-                        <p style="margin: 0; color: #333333;"><b>Weight:</b> {df_row['weight']}</p>
+            <div style="
+                display: flex; 
+                align-items: center; 
+                padding: 10px; 
+                border: 1px solid #ddd; 
+                margin-bottom: 10px; 
+                border-radius: 10px; 
+                background-color: #f0f2f6; 
+                flex-wrap: wrap;
+                width: 100%;
+                max-width: 850px">
+                <div style="flex: 1; min-width: 200px; max-width: 55%;">
+                    <h3 style="margin: 0; padding: 2px; font-size: 1.2em;">{widget_title}</h3>
+                    <p style="margin: 0; color: #333333;"><b>Name:</b> {df_row['name']}</p>
+                    <p style="margin: 0; color: #333333;"><b>Breed:</b> {df_row['breed']}</p>
+                    <p style="margin: 0; color: #333333;"><b>Age:</b> {df_row['age']}</p>
+                    <p style="margin: 0; color: #333333;"><b>Weight:</b> {df_row['weight']}</p>
+                    <div style="
+                        max-height: 80px; 
+                        overflow: auto; 
+                        margin-top: 10px;
+                        color: #333333;">
+                        <p style="margin: 0;">{df_row['desc']}</p>
                     </div>
-                    <img src="{df_row['img']}" alt="Image" style="width: auto; height: 300px; border-radius: 8px;">
                 </div>
-                <div style="margin-top: 10px;">
-                    <p style="margin: 0; color: #333333;">{df_row['desc']}</p>
-                </div>
+                <img src="{df_row['img']}" alt="News Image" style="
+                    width: 40%; 
+                    max-width: 300px; 
+                    height: auto; 
+                    margin-left: auto; 
+                    padding: 0px; 
+                    border-radius: 8px;">
             </div>
         </a>
     """
-
     return html

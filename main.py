@@ -7,7 +7,7 @@ import functions.utils as fu
 import os
 
 
-# Boulder Human Society Cat Adoption Homepage
+#%% Boulder Human Society Cat Adoption Homepage
 url = 'https://boulderhumane.org/cats'
 
 # Run the web scraper
@@ -25,6 +25,7 @@ lightest_cat_row = cat_df_sorted.iloc[0]
 
 # Get the row with the heaviest cat (last row after sorting)
 heaviest_cat_row = cat_df_sorted.iloc[-1]
+
 
 
 #%% Send the Email
@@ -57,3 +58,5 @@ server.sendmail(sender_email, recipient_emails, msg.as_string())
 
 # Close the server connection
 server.quit()
+
+# %%
