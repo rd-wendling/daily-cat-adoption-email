@@ -2,7 +2,7 @@ name: Scheduled Job
 
 on:
   schedule:
-    - cron: '59 5 * * *' #'0 2 * * *'  # Runs at 2 am UTC every day (8 MDT)
+    - cron: '05 6 * * *' #'0 2 * * *'  # Runs at 2 am UTC every day (8 MDT)
 
 jobs:
   run_script:
