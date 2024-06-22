@@ -29,7 +29,7 @@ def get_source_after_render(url):
     renders correctly, unlike when using the requests library. It is slower.
     '''
     try:
-        driver = webdriver.Chrome(options=chrome_options)
+        driver = webdriver.Chrome(executable_path='/usr/local/bin/chromedriver', options=chrome_options)
         driver.get(url)
 
         wait = WebDriverWait(driver, 10)
