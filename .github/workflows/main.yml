@@ -29,8 +29,8 @@ jobs:
       run: |
         wget https://storage.googleapis.com/chrome-for-testing-public/139.0.7258.154/linux64/chrome-linux64.zip
         unzip chrome-linux64.zip -d chrome-linux64
-        sudo mv chrome-linux64/chromed-linux64/chrome /usr/local/bin/
-        sudo chmod +x /usr/local/bin/chrome
+        sudo mv chrome-linux64/chromed-linux64/chromedriver /usr/local/bin/
+        sudo chmod +x /usr/local/bin/chromedriver
 
 
     - name: Set up environment variables
